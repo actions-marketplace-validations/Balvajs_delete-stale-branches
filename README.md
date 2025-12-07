@@ -19,7 +19,7 @@ jobs:
       contents: write # to be able to delete branches
       pull-requests: read # to be able to confirm that branches don't have associated PRs
     steps:
-      - uses: balvajs/delete-stale-branches@v1
+      - uses: balvajs/delete-stale-branches@v2
         with:
           days-to-delete: 120
           dry-run: false
@@ -28,9 +28,10 @@ jobs:
 ## Inputs
 
 | INPUT          | TYPE    | DEFAULT                      | DESCRIPTION                                                                                           |
-|----------------|---------|------------------------------|-------------------------------------------------------------------------------------------------------|
+| -------------- | ------- | ---------------------------- | ----------------------------------------------------------------------------------------------------- |
 | days-to-delete | number  | `90`                         | Number of days without activity after which the branch will be deleted                                |
 | dry-run        | boolean | `true`                       | If set to true, the action will only log the branches that would be deleted, but will not delete them |
 | repository     | string  | `"${{ github.repository }}"` | Repository name and owner in format `"owner/repo"`                                                    |
 | token          | string  | `"${{ github.token }}"`      | GitHub token with `pull-requests: read` and `contents: write` permissions                             |
+
 \* required

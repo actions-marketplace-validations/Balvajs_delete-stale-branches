@@ -14,18 +14,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
 
-      - name: Set Node.js 16.x
-        uses: actions/setup-node@v3.7.0
+      - name: Set Node.js 20.x
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
         with:
-          node-version: 16.x
+          node-version: 20.x
 
-      - name: Install dependencies
-        run: yarn install --immutable
+      - name: Install bun
+        uses: oven-sh/setup-bun@8f24390df009a496891208e5e36b8a1de1f45135 # v1
+
+      - run: bun install --frozen-lockfile
 
       - name: Rebuild the dist/ directory
-        run: yarn package
+        run: bun package
 
       - name: Compare the expected and actual dist/ directories
         run: |

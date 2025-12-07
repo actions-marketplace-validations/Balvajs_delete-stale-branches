@@ -1,8 +1,3 @@
-/**
- * Copyright (c) ProductBoard, Inc.
- * All rights reserved.
- */
-
 import path from 'path'
 
 import { schema } from '@octokit/graphql-schema'
@@ -26,7 +21,7 @@ const config: CodegenConfig = {
           add: {
             content: `/* eslint-disable */
                /**
-               * This file is generated, don’t edit it manually. Run \`yarn generate\` to re-generate.
+               * This file is generated, don’t edit it manually. Run \`bun generate\` to re-generate.
                */
              `,
           },

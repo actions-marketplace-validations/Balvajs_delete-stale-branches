@@ -1,0 +1,24 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:best-practices", "mergeConfidence:all-badges"],
+  "minor": {
+    "automerge": true
+  },
+  "patch": {
+    "automerge": true
+  },
+  "packageRules": [
+    {
+      "matchPackageNames": ["@types/node"],
+      "allowedVersions": "/^20\\..*$/"
+    },
+    {
+      "matchManagers": ["npm"],
+      "postUpgradeTasks": {
+        "commands": ["bun install", "bun generate", "bun package"],
+        "fileFilters": ["src/**/*", "dist/**/*"],
+        "executionMode": "branch"
+      }
+    }
+  ]
+}
